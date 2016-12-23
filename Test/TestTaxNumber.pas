@@ -26,7 +26,6 @@ type
   published
     procedure TestCheckTaxNumber;
     procedure TestCheckBusinessTaxNumber;
-    procedure TestRemoveDigits;
   end;
 
 implementation
@@ -59,17 +58,6 @@ var
 begin
   // TODO: Setup method call parameters
   ReturnValue := FTaxNumber.CheckBusinessTaxNumber(TaxNumber);
-  // TODO: Validate method results
-end;
-
-procedure TestTTaxNumber.TestRemoveDigits;
-var
-  ReturnValue: string;
-  digits: Byte;
-  value: string;
-begin
-  // TODO: Setup method call parameters
-  ReturnValue := FTaxNumber.RemoveDigits(value, digits);
   // TODO: Validate method results
 end;
 
