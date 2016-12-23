@@ -16,13 +16,10 @@ program FederalBrazilianTaxNumberTests;
 
 uses
   TestTaxNumber in 'TestTaxNumber.pas',
-  TaxNumber in '..\TaxNumber.pas';
+  TaxNumber in '..\TaxNumber.pas',
+  DUnitTestRunner;
 
-ususes
-  DUnitTestRunner,
-  TestTaxNumber in 'TestTaxNumber.pas';
-
-R *.RES}
+{R *.RES}
 
 begin
   DUnitTestRunner.RunRegisteredTests;
