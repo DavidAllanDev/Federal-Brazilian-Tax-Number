@@ -26,6 +26,8 @@ type
   published
     procedure TestCheckTaxNumber;
     procedure TestCheckBusinessTaxNumber;
+    procedure TestInvalidTaxNumber;
+    procedure TestInvalidBusinessTaxNumber;
   end;
 
 implementation
@@ -51,6 +53,30 @@ begin
   ReturnValue := FTaxNumber.CheckTaxNumber(TaxNumber);
   //Validate method results
   Assert(ReturnValue);
+end;
+
+procedure TestTTaxNumber.TestInvalidBusinessTaxNumber;
+var
+  ReturnValue: Boolean;
+  TaxNumber: string;
+begin
+  //Setup method call parameters
+  TaxNumber := '08.805.315/0001-10';
+  ReturnValue := FTaxNumber.CheckBusinessTaxNumber(TaxNumber);
+  //Validate method results
+  Assert(not ReturnValue);
+end;
+
+procedure TestTTaxNumber.TestInvalidTaxNumber;
+var
+  ReturnValue: Boolean;
+  TaxNumber: string;
+begin
+  // Setup method call parameters
+  TaxNumber := '726.218.380-00';
+  ReturnValue := FTaxNumber.CheckTaxNumber(TaxNumber);
+  //Validate method results
+  Assert(not ReturnValue);
 end;
 
 procedure TestTTaxNumber.TestCheckBusinessTaxNumber;
