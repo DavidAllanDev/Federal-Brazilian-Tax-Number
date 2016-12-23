@@ -6,6 +6,9 @@
         <Projects Include="FederalBrazilianTaxNumber.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Test\FederalBrazilianTaxNumberTests.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -23,14 +26,23 @@
     <Target Name="FederalBrazilianTaxNumber:Make">
         <MSBuild Projects="FederalBrazilianTaxNumber.dproj" Targets="Make"/>
     </Target>
+    <Target Name="FederalBrazilianTaxNumberTests">
+        <MSBuild Projects="Test\FederalBrazilianTaxNumberTests.dproj"/>
+    </Target>
+    <Target Name="FederalBrazilianTaxNumberTests:Clean">
+        <MSBuild Projects="Test\FederalBrazilianTaxNumberTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FederalBrazilianTaxNumberTests:Make">
+        <MSBuild Projects="Test\FederalBrazilianTaxNumberTests.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="FederalBrazilianTaxNumber"/>
+        <CallTarget Targets="FederalBrazilianTaxNumber;FederalBrazilianTaxNumberTests"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="FederalBrazilianTaxNumber:Clean"/>
+        <CallTarget Targets="FederalBrazilianTaxNumber:Clean;FederalBrazilianTaxNumberTests:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="FederalBrazilianTaxNumber:Make"/>
+        <CallTarget Targets="FederalBrazilianTaxNumber:Make;FederalBrazilianTaxNumberTests:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
