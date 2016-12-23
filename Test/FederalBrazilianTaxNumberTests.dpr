@@ -15,9 +15,14 @@ program FederalBrazilianTaxNumberTests;
 {$ENDIF}
 
 uses
-  DUnitTestRunner;
+  TestTaxNumber in 'TestTaxNumber.pas',
+  TaxNumber in '..\TaxNumber.pas';
 
-{$R *.RES}
+ususes
+  DUnitTestRunner,
+  TestTaxNumber in 'TestTaxNumber.pas';
+
+R *.RES}
 
 begin
   DUnitTestRunner.RunRegisteredTests;
