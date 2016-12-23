@@ -47,7 +47,7 @@ var
   TaxNumber: string;
 begin
   // Setup method call parameters
-  TaxNumber := '77122215024'; //generated form https://www.geradordecpf.org
+  TaxNumber := '726.218.380-06'; //generated form https://www.geradordecpf.org
   ReturnValue := FTaxNumber.CheckTaxNumber(TaxNumber);
   //Validate method results
   Assert(ReturnValue);
@@ -59,7 +59,7 @@ var
   TaxNumber: string;
 begin
   //Setup method call parameters
-  TaxNumber := '33160030000114'; //generated form https://www.geradordecpf.org
+  TaxNumber := '08.805.315/0001-18'; //generated form https://www.geradordecpf.org
   ReturnValue := FTaxNumber.CheckBusinessTaxNumber(TaxNumber);
   //Validate method results
   Assert(ReturnValue);

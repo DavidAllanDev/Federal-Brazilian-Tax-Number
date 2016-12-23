@@ -12,6 +12,7 @@ type
       function CheckBusinessTaxNumber(TaxNumber: string): Boolean;
     private
       function RemoveDigits(value: string; digits: byte):string;
+      function RemoveSpecialChars(text :string): string;
   end;
 
 implementation
@@ -25,6 +26,8 @@ Var
   digit, NoDigitTaxNumber: string;
   IniTosum, EndTosum, sum, preCalc, I: Integer;
 begin
+  TaxNumber := RemoveSpecialChars(TaxNumber);
+
   if Length(TaxNumber) < 11 then
   begin
     Result := False;
@@ -85,6 +88,11 @@ begin
   Result := Copy(value,0,Length(value)-digits);
 end;
 
+function TTaxNumber.RemoveSpecialChars(text: string): string;
+begin
+  Result := text.Replace('.','').Replace('-','').Replace('/','');
+end;
+
 function TTaxNumber.CheckBusinessTaxNumber(TaxNumber: string): Boolean;
 Var
   IntArInitialMultiplier: TArray<Integer>;
@@ -92,11 +100,14 @@ Var
   digit, NoDigitTaxNumber: string;
   IniTosum, EndTosum, sum, preCalc, I: Integer;
 begin
+  TaxNumber := RemoveSpecialChars(TaxNumber);
+
   if Length(TaxNumber) < 14 then
   begin
     Result := False;
     Exit;
   end;
+
   NoDigitTaxNumber := RemoveDigits(TaxNumber, 2);
 
   SetLength(IntArInitialMultiplier, 13);
