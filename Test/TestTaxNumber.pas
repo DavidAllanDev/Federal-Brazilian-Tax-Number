@@ -46,9 +46,11 @@ var
   ReturnValue: Boolean;
   TaxNumber: string;
 begin
-  // TODO: Setup method call parameters
+  // Setup method call parameters
+  TaxNumber := '77122215024'; //generated form https://www.geradordecpf.org
   ReturnValue := FTaxNumber.CheckTaxNumber(TaxNumber);
-  // TODO: Validate method results
+  //Validate method results
+  Assert(ReturnValue);
 end;
 
 procedure TestTTaxNumber.TestCheckBusinessTaxNumber;
@@ -56,9 +58,11 @@ var
   ReturnValue: Boolean;
   TaxNumber: string;
 begin
-  // TODO: Setup method call parameters
+  //Setup method call parameters
+  TaxNumber := '33160030000114'; //generated form https://www.geradordecpf.org
   ReturnValue := FTaxNumber.CheckBusinessTaxNumber(TaxNumber);
-  // TODO: Validate method results
+  //Validate method results
+  Assert(ReturnValue);
 end;
 
 initialization

@@ -21,7 +21,10 @@ uses
 
 {R *.RES}
 
+var
+text:string;
 begin
   DUnitTestRunner.RunRegisteredTests;
+  Readln(text);
 end.
 
