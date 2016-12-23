@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F5BBB05A-10DD-4A92-B0BC-071C68FAFB97}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="FederalBrazilianTaxNumber.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FederalBrazilianTaxNumber">
+        <MSBuild Projects="FederalBrazilianTaxNumber.dproj"/>
+    </Target>
+    <Target Name="FederalBrazilianTaxNumber:Clean">
+        <MSBuild Projects="FederalBrazilianTaxNumber.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FederalBrazilianTaxNumber:Make">
+        <MSBuild Projects="FederalBrazilianTaxNumber.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FederalBrazilianTaxNumber"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FederalBrazilianTaxNumber:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FederalBrazilianTaxNumber:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

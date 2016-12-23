@@ -45,3 +45,9 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+TaxNumbers.groupproj.local
+FederalBrazilianTaxNumber.identcache
+*.local
+*.~1~
+*.dcu
+*.res
