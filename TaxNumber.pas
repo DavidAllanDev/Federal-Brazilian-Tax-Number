@@ -3,19 +3,18 @@ unit TaxNumber;
 interface
 
 uses
-  System.SysUtils;
+  System.SysUtils, ITaxNumber;
 
 type
-  TTaxNumber = class
+    TTaxNumber = class(TInterfacedObject, Tax)
     public
       function CheckTaxNumber(TaxNumber: string): Boolean;
       function CheckBusinessTaxNumber(TaxNumber: string): Boolean;
-    private
-      function RemoveDigits(value: string; digits: byte):string;
-      function RemoveSpecialChars(text :string): string;
-  end;
+      function RemoveDigits(value: string; digits: byte): string;
+      function RemoveSpecialChars(text: string): string;
+    end;
 
-implementation
+  implementation
 
 { TTaxNumber }
 

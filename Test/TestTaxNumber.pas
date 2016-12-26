@@ -12,7 +12,7 @@ unit TestTaxNumber;
 interface
 
 uses
-  TestFramework, TaxNumber, System.SysUtils;
+  TestFramework, TaxNumber, ITaxNumber, System.SysUtils;
 
 type
   // Test methods for class TTaxNumber

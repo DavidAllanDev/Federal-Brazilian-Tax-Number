@@ -13,7 +13,8 @@ library FederalBrazilianTaxNumber;
 uses
   System.SysUtils,
   System.Classes,
-  TaxNumber in 'TaxNumber.pas';
+  TaxNumber in 'TaxNumber.pas',
+  ITaxNumber in 'ITaxNumber.pas';
 
 {$R *.res}
 
