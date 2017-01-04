@@ -12,6 +12,9 @@ type
       function CheckBusinessTaxNumber(TaxNumber: string): Boolean;
       function RemoveDigits(value: string; digits: byte): string;
       function RemoveSpecialChars(text: string): string;
+    private
+      function GetBusinessTaxNumberDigit(NoDigitTaxNumber: string): string;
+      function GetTaxNumberDigit(NoDigitTaxNumber: string): string;
     end;
 
   implementation
@@ -20,10 +23,7 @@ type
 
 function TTaxNumber.CheckTaxNumber(TaxNumber: string): Boolean;
 Var
-  IntArInitialMultiplier: TArray<Integer>;
-  IntArFinalMultiplier: TArray<Integer>;
   digit, NoDigitTaxNumber: string;
-  IniTosum, EndTosum, sum, preCalc, I: Integer;
 begin
   TaxNumber := RemoveSpecialChars(TaxNumber);
 
@@ -34,6 +34,30 @@ begin
   end;
   NoDigitTaxNumber := RemoveDigits(TaxNumber, 2);
 
+  digit := GetTaxNumberDigit(NoDigitTaxNumber);
+
+  if (Copy(TaxNumber, 10, 2) = digit) then
+  begin
+    Result := True;
+  end
+  else
+  begin
+    Result := False;
+  end;
+end;
+
+function TTaxNumber.GetBusinessTaxNumberDigit(NoDigitTaxNumber: string): string;
+begin
+  Result := '';
+end;
+
+function TTaxNumber.GetTaxNumberDigit(NoDigitTaxNumber: string): string;
+var
+  IntArInitialMultiplier: TArray<Integer>;
+  IntArFinalMultiplier: TArray<Integer>;
+    IniTosum, EndTosum, sum, preCalc, I: Integer;
+      digit:string;
+begin
   SetLength(IntArInitialMultiplier, 10);
   SetLength(IntArFinalMultiplier, 10);
 
@@ -72,14 +96,7 @@ begin
 
   digit := digit + IntToStr(preCalc);
 
-  if (Copy(TaxNumber, 10, 2) = digit) then
-  begin
-    Result := True;
-  end
-  else
-  begin
-    Result := False;
-  end;
+  Result := digit;
 end;
 
 function TTaxNumber.RemoveDigits(value: string; digits: byte): string;
