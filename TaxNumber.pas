@@ -20,6 +20,7 @@ type
       function GetSecondPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
       function GetFirstPartTaxDigit(NoDigitTaxNumber: string): string;
       function GetSecondPartTaxDigit(NoDigitTaxNumber: string): string;
+      function DigitIterator(NoDigitTaxNumber: string; iterations :Integer; MultiplierList :TArray<Integer>; divisor: Integer):Integer;
     end;
 
   implementation
@@ -47,6 +48,20 @@ begin
     Result := False;
 end;
 
+function TTaxNumber.DigitIterator(NoDigitTaxNumber: string; iterations: Integer; MultiplierList: TArray<Integer>; divisor: Integer): Integer;
+var
+I, sum, aNumberOnTaxtNumber:Integer;
+begin
+ sum := 0;
+  for I := 0 to iterations do
+  begin
+    aNumberOnTaxtNumber := StrToInt(Copy(NoDigitTaxNumber, I + 1, 1));
+    sum := sum + (aNumberOnTaxtNumber * MultiplierList[I]);
+  end;
+
+  Result := sum MOD divisor;
+end;
+
 function TTaxNumber.GetBusinessTaxNumberDigit(NoDigitTaxNumber: string): string;
 var
   digit:string;
@@ -66,18 +81,12 @@ end;
 function TTaxNumber.GetFirstPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
 var
   IntArInitialMultiplier: TArray<Integer>;
-  IniTosum, sum, preCalc, I: Integer;
+  preCalc: Integer;
 begin
   SetLength(IntArInitialMultiplier, BusinessTaxNumberLength-1);
   IntArInitialMultiplier := [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
-  sum := 0;
-  for I := 0 to 11 do
-  begin
-    IniTosum := StrToInt(Copy(NoDigitTaxNumber, I + 1, 1));
-    sum := sum + (IniTosum * IntArInitialMultiplier[I]);
-  end;
-  preCalc := sum MOD 11;
+  preCalc := DigitIterator(NoDigitTaxNumber,11,IntArInitialMultiplier,11);
 
   if preCalc < 2 then
     preCalc := 0
@@ -89,18 +98,12 @@ end;
 function TTaxNumber.GetFirstPartTaxDigit(NoDigitTaxNumber: string): string;
 var
   IntArInitialMultiplier: TArray<Integer>;
-  IniTosum, sum, preCalc, I: Integer;
+  preCalc: Integer;
 begin
   SetLength(IntArInitialMultiplier, TaxNumberLength-1);
   IntArInitialMultiplier := [10, 9, 8, 7, 6, 5, 4, 3, 2];
 
-  sum := 0;
-  for I := 0 to 8 do
-  begin
-    IniTosum := StrToInt(Copy(NoDigitTaxNumber, I + 1, 1));
-    sum := sum + (IniTosum * IntArInitialMultiplier[I]);
-  end;
-  preCalc := sum MOD 11;
+  preCalc := DigitIterator(NoDigitTaxNumber,8,IntArInitialMultiplier,11);
 
   if preCalc < 2 then
     preCalc := 0
