@@ -70,7 +70,6 @@ begin
     preCalc := 11 - preCalc;
 
   digit := IntToStr(preCalc);
-   digit := StringReplace(digit, '-', '', [rfReplaceAll, rfIgnoreCase]);
   NoDigitTaxNumber := NoDigitTaxNumber + digit;
 
   sum := 0;
@@ -122,7 +121,6 @@ begin
     preCalc := 11 - preCalc;
 
   digit := IntToStr(preCalc);
-  digit := StringReplace(digit, '-', '', [rfReplaceAll, rfIgnoreCase]);
   NoDigitTaxNumber := NoDigitTaxNumber + digit;
 
   sum := 0;
