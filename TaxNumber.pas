@@ -15,12 +15,15 @@ type
     private
       function GetBusinessTaxNumberDigit(NoDigitTaxNumber: string): string;
       function GetTaxNumberDigit(NoDigitTaxNumber: string): string;
+      function GetDigits(taxNumber: string):string;
     end;
 
   implementation
 
 const
 NumberOfDigits = 2;
+TaxNumberLength = 11;
+BusinessTaxNumberLength = 14;
 
 { TTaxNumber }
 
@@ -28,13 +31,13 @@ function TTaxNumber.CheckTaxNumber(TaxNumber: string): Boolean;
 begin
   TaxNumber := RemoveSpecialChars(TaxNumber);
 
-  if Length(TaxNumber) < 11 then
+  if Length(TaxNumber) < TaxNumberLength then
   begin
     Result := False;
     Exit;
   end;
 
-  if (Copy(TaxNumber, 10, NumberOfDigits) = GetTaxNumberDigit(RemoveDigits(TaxNumber, NumberOfDigits))) then
+  if (GetDigits(TaxNumber) = GetTaxNumberDigit(RemoveDigits(TaxNumber, NumberOfDigits))) then
     Result := True
   else
     Result := False;
@@ -85,6 +88,11 @@ begin
 
   digit := digit + IntToStr(preCalc);
   Result := digit;
+end;
+
+function TTaxNumber.GetDigits(taxNumber: string): string;
+begin
+ Result := Copy(taxNumber, Length(taxNumber)-1, NumberOfDigits);
 end;
 
 function TTaxNumber.GetTaxNumberDigit(NoDigitTaxNumber: string): string;
@@ -149,13 +157,13 @@ function TTaxNumber.CheckBusinessTaxNumber(TaxNumber: string): Boolean;
 begin
   TaxNumber := RemoveSpecialChars(TaxNumber);
 
-  if Length(TaxNumber) < 14 then
+  if Length(TaxNumber) < BusinessTaxNumberLength then
   begin
     Result := False;
     Exit;
   end;
 
-  if(Copy(TaxNumber, 13, NumberOfDigits) = GetBusinessTaxNumberDigit(RemoveDigits(TaxNumber, NumberOfDigits)))then
+  if(GetDigits(TaxNumber) = GetBusinessTaxNumberDigit(RemoveDigits(TaxNumber, NumberOfDigits)))then
     Result := True
   else
     Result := False;
