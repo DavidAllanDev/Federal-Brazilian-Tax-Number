@@ -51,10 +51,7 @@ var
   digit:string;
 begin
   SetLength(IntArInitialMultiplier, BusinessTaxNumberLength-1);
-  SetLength(IntArFinalMultiplier, BusinessTaxNumberLength-1);
-
   IntArInitialMultiplier := [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-  IntArFinalMultiplier   := [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
   sum := 0;
   for I := 0 to 11 do
@@ -72,6 +69,8 @@ begin
   digit := IntToStr(preCalc);
   NoDigitTaxNumber := NoDigitTaxNumber + digit;
 
+  SetLength(IntArFinalMultiplier, BusinessTaxNumberLength-1);
+  IntArFinalMultiplier   := [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
   sum := 0;
   for I := 0 to 12 do
   begin
@@ -102,10 +101,7 @@ var
   digit:string;
 begin
   SetLength(IntArInitialMultiplier, TaxNumberLength-1);
-  SetLength(IntArFinalMultiplier, TaxNumberLength-1);
-
   IntArInitialMultiplier := [10, 9, 8, 7, 6, 5, 4, 3, 2];
-  IntArFinalMultiplier   := [11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
 
   sum := 0;
   for I := 0 to 8 do
@@ -123,6 +119,8 @@ begin
   digit := IntToStr(preCalc);
   NoDigitTaxNumber := NoDigitTaxNumber + digit;
 
+  SetLength(IntArFinalMultiplier, TaxNumberLength-1);
+  IntArFinalMultiplier   := [11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
   sum := 0;
   for I := 0 to 9 do
   begin
