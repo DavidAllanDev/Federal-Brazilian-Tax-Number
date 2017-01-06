@@ -50,8 +50,8 @@ var
   IniTosum, EndTosum, sum, preCalc, I: Integer;
   digit:string;
 begin
-  SetLength(IntArInitialMultiplier, 13);
-  SetLength(IntArFinalMultiplier, 13);
+  SetLength(IntArInitialMultiplier, BusinessTaxNumberLength-1);
+  SetLength(IntArFinalMultiplier, BusinessTaxNumberLength-1);
 
   IntArInitialMultiplier := [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
   IntArFinalMultiplier   := [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
@@ -102,8 +102,8 @@ var
   IniTosum, EndTosum, sum, preCalc, I: Integer;
   digit:string;
 begin
-  SetLength(IntArInitialMultiplier, 10);
-  SetLength(IntArFinalMultiplier, 10);
+  SetLength(IntArInitialMultiplier, TaxNumberLength-1);
+  SetLength(IntArFinalMultiplier, TaxNumberLength-1);
 
   IntArInitialMultiplier := [10, 9, 8, 7, 6, 5, 4, 3, 2];
   IntArFinalMultiplier   := [11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
