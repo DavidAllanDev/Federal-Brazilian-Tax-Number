@@ -16,9 +16,9 @@ type
       function GetBusinessTaxNumberDigit(NoDigitTaxNumber: string): string;
       function GetTaxNumberDigit(NoDigitTaxNumber: string): string;
       function GetDigits(taxNumber: string):string;
-      function GetFristPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
+      function GetFirstPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
       function GetSecondPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
-      function GetFristPartTaxDigit(NoDigitTaxNumber: string): string;
+      function GetFirstPartTaxDigit(NoDigitTaxNumber: string): string;
       function GetSecondPartTaxDigit(NoDigitTaxNumber: string): string;
     end;
 
@@ -51,7 +51,7 @@ function TTaxNumber.GetBusinessTaxNumberDigit(NoDigitTaxNumber: string): string;
 var
   digit:string;
 begin
-  digit := GetFristPartBusinessTaxDigit(NoDigitTaxNumber);
+  digit := GetFirstPartBusinessTaxDigit(NoDigitTaxNumber);
   NoDigitTaxNumber := NoDigitTaxNumber + digit;
 
   digit := digit + GetSecondPartBusinessTaxDigit(NoDigitTaxNumber);
@@ -63,7 +63,7 @@ begin
  Result := Copy(taxNumber, Length(taxNumber)-1, NumberOfDigits);
 end;
 
-function TTaxNumber.GetFristPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
+function TTaxNumber.GetFirstPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
 var
   IntArInitialMultiplier: TArray<Integer>;
   IniTosum, sum, preCalc, I: Integer;
@@ -86,7 +86,7 @@ begin
     Result := IntToStr(preCalc);
 end;
 
-function TTaxNumber.GetFristPartTaxDigit(NoDigitTaxNumber: string): string;
+function TTaxNumber.GetFirstPartTaxDigit(NoDigitTaxNumber: string): string;
 var
   IntArInitialMultiplier: TArray<Integer>;
   IniTosum, sum, preCalc, I: Integer;
@@ -160,7 +160,7 @@ function TTaxNumber.GetTaxNumberDigit(NoDigitTaxNumber: string): string;
 var
   digit:string;
 begin
-  digit := GetFristPartTaxDigit(NoDigitTaxNumber);
+  digit := GetFirstPartTaxDigit(NoDigitTaxNumber);
   NoDigitTaxNumber := NoDigitTaxNumber + digit;
   digit := digit +  GetSecondPartTaxDigit(NoDigitTaxNumber);
 
