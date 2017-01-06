@@ -121,6 +121,7 @@ begin
   SetLength(IntArFinalMultiplier, BusinessTaxNumberLength-1);
   IntArFinalMultiplier   := [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
+  preCalc := DigitIterator(NoDigitTaxNumber,12,IntArFinalMultiplier,11);
 
   if preCalc < 2 then
     preCalc := 0
