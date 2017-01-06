@@ -116,17 +116,11 @@ end;
 function TTaxNumber.GetSecondPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
 var
   IntArFinalMultiplier: TArray<Integer>;
-  EndTosum, sum, preCalc, I: Integer;
+  preCalc: Integer;
 begin
   SetLength(IntArFinalMultiplier, BusinessTaxNumberLength-1);
   IntArFinalMultiplier   := [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-  sum := 0;
-  for I := 0 to 12 do
-  begin
-    EndTosum := StrToInt(Copy(NoDigitTaxNumber, I + 1, 1));
-    sum := sum + (EndTosum * IntArFinalMultiplier[I]);
-  end;
-  preCalc := sum MOD 11;
+
 
   if preCalc < 2 then
     preCalc := 0
@@ -139,17 +133,12 @@ end;
 function TTaxNumber.GetSecondPartTaxDigit(NoDigitTaxNumber: string): string;
 var
   IntArFinalMultiplier: TArray<Integer>;
-  EndTosum, sum, preCalc, I: Integer;
+  preCalc: Integer;
 begin
   SetLength(IntArFinalMultiplier, TaxNumberLength-1);
   IntArFinalMultiplier   := [11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
-  sum := 0;
-  for I := 0 to 9 do
-  begin
-    EndTosum := StrToInt(Copy(NoDigitTaxNumber, I + 1, 1));
-    sum := sum + (EndTosum * IntArFinalMultiplier[I]);
-  end;
-  preCalc := sum MOD 11;
+
+  preCalc := DigitIterator(NoDigitTaxNumber,9,IntArFinalMultiplier,11);
 
   if preCalc < 2 then
     preCalc := 0
