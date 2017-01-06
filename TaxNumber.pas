@@ -16,6 +16,8 @@ type
       function GetBusinessTaxNumberDigit(NoDigitTaxNumber: string): string;
       function GetTaxNumberDigit(NoDigitTaxNumber: string): string;
       function GetDigits(taxNumber: string):string;
+      function GetFristPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
+      function GetSecondPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
     end;
 
   implementation
@@ -45,10 +47,24 @@ end;
 
 function TTaxNumber.GetBusinessTaxNumberDigit(NoDigitTaxNumber: string): string;
 var
-  IntArInitialMultiplier: TArray<Integer>;
-  IntArFinalMultiplier: TArray<Integer>;
-  IniTosum, EndTosum, sum, preCalc, I: Integer;
   digit:string;
+begin
+  digit := GetFristPartBusinessTaxDigit(NoDigitTaxNumber);
+  NoDigitTaxNumber := NoDigitTaxNumber + digit;
+
+  digit := digit + GetSecondPartBusinessTaxDigit(NoDigitTaxNumber);
+  Result := digit;
+end;
+
+function TTaxNumber.GetDigits(taxNumber: string): string;
+begin
+ Result := Copy(taxNumber, Length(taxNumber)-1, NumberOfDigits);
+end;
+
+function TTaxNumber.GetFristPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
+var
+  IntArInitialMultiplier: TArray<Integer>;
+  IniTosum, sum, preCalc, I: Integer;
 begin
   SetLength(IntArInitialMultiplier, BusinessTaxNumberLength-1);
   IntArInitialMultiplier := [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
@@ -65,10 +81,14 @@ begin
     preCalc := 0
   else
     preCalc := 11 - preCalc;
+    Result := IntToStr(preCalc);
+end;
 
-  digit := IntToStr(preCalc);
-  NoDigitTaxNumber := NoDigitTaxNumber + digit;
-
+function TTaxNumber.GetSecondPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
+var
+  IntArFinalMultiplier: TArray<Integer>;
+  EndTosum, sum, preCalc, I: Integer;
+begin
   SetLength(IntArFinalMultiplier, BusinessTaxNumberLength-1);
   IntArFinalMultiplier   := [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
   sum := 0;
@@ -84,13 +104,7 @@ begin
   else
     preCalc := 11 - preCalc;
 
-  digit := digit + IntToStr(preCalc);
-  Result := digit;
-end;
-
-function TTaxNumber.GetDigits(taxNumber: string): string;
-begin
- Result := Copy(taxNumber, Length(taxNumber)-1, NumberOfDigits);
+  Result := IntToStr(preCalc);
 end;
 
 function TTaxNumber.GetTaxNumberDigit(NoDigitTaxNumber: string): string;
