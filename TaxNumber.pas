@@ -18,6 +18,8 @@ type
       function GetDigits(taxNumber: string):string;
       function GetFristPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
       function GetSecondPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
+      function GetFristPartTaxDigit(NoDigitTaxNumber: string): string;
+      function GetSecondPartTaxDigit(NoDigitTaxNumber: string): string;
     end;
 
   implementation
@@ -84,6 +86,30 @@ begin
     Result := IntToStr(preCalc);
 end;
 
+function TTaxNumber.GetFristPartTaxDigit(NoDigitTaxNumber: string): string;
+var
+  IntArInitialMultiplier: TArray<Integer>;
+  IniTosum, sum, preCalc, I: Integer;
+begin
+  SetLength(IntArInitialMultiplier, TaxNumberLength-1);
+  IntArInitialMultiplier := [10, 9, 8, 7, 6, 5, 4, 3, 2];
+
+  sum := 0;
+  for I := 0 to 8 do
+  begin
+    IniTosum := StrToInt(Copy(NoDigitTaxNumber, I + 1, 1));
+    sum := sum + (IniTosum * IntArInitialMultiplier[I]);
+  end;
+  preCalc := sum MOD 11;
+
+  if preCalc < 2 then
+    preCalc := 0
+  else
+    preCalc := 11 - preCalc;
+
+  Result := IntToStr(preCalc);
+end;
+
 function TTaxNumber.GetSecondPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
 var
   IntArFinalMultiplier: TArray<Integer>;
@@ -107,32 +133,11 @@ begin
   Result := IntToStr(preCalc);
 end;
 
-function TTaxNumber.GetTaxNumberDigit(NoDigitTaxNumber: string): string;
+function TTaxNumber.GetSecondPartTaxDigit(NoDigitTaxNumber: string): string;
 var
-  IntArInitialMultiplier: TArray<Integer>;
   IntArFinalMultiplier: TArray<Integer>;
-  IniTosum, EndTosum, sum, preCalc, I: Integer;
-  digit:string;
+  EndTosum, sum, preCalc, I: Integer;
 begin
-  SetLength(IntArInitialMultiplier, TaxNumberLength-1);
-  IntArInitialMultiplier := [10, 9, 8, 7, 6, 5, 4, 3, 2];
-
-  sum := 0;
-  for I := 0 to 8 do
-  begin
-    IniTosum := StrToInt(Copy(NoDigitTaxNumber, I + 1, 1));
-    sum := sum + (IniTosum * IntArInitialMultiplier[I]);
-  end;
-  preCalc := sum MOD 11;
-
-  if preCalc < 2 then
-    preCalc := 0
-  else
-    preCalc := 11 - preCalc;
-
-  digit := IntToStr(preCalc);
-  NoDigitTaxNumber := NoDigitTaxNumber + digit;
-
   SetLength(IntArFinalMultiplier, TaxNumberLength-1);
   IntArFinalMultiplier   := [11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
   sum := 0;
@@ -148,7 +153,16 @@ begin
   else
     preCalc := 11 - preCalc;
 
-  digit := digit + IntToStr(preCalc);
+  Result := IntToStr(preCalc);
+end;
+
+function TTaxNumber.GetTaxNumberDigit(NoDigitTaxNumber: string): string;
+var
+  digit:string;
+begin
+  digit := GetFristPartTaxDigit(NoDigitTaxNumber);
+  NoDigitTaxNumber := NoDigitTaxNumber + digit;
+  digit := digit +  GetSecondPartTaxDigit(NoDigitTaxNumber);
 
   Result := digit;
 end;
