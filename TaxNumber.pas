@@ -20,7 +20,7 @@ type
       function GetSecondPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
       function GetFirstPartTaxDigit(NoDigitTaxNumber: string): string;
       function GetSecondPartTaxDigit(NoDigitTaxNumber: string): string;
-      function DigitIterator(NoDigitTaxNumber: string; iterations :Integer; MultiplierList :TArray<Integer>):Integer;
+      function DigitIterator(NoDigitTaxNumber: string; iterations :Integer; MultiplierList :TArray<Integer>):string;
     end;
 
   implementation
@@ -49,7 +49,7 @@ begin
     Result := False;
 end;
 
-function TTaxNumber.DigitIterator(NoDigitTaxNumber: string; iterations: Integer; MultiplierList: TArray<Integer>): Integer;
+function TTaxNumber.DigitIterator(NoDigitTaxNumber: string; iterations: Integer; MultiplierList: TArray<Integer>): string;
 var
 I, sum, aNumberOnTaxtNumber,preCalc:Integer;
 begin
@@ -67,7 +67,7 @@ begin
   else
     preCalc := BaseCaulculation - preCalc;
 
-  Result := preCalc;
+  Result := IntToStr(preCalc);
 end;
 
 function TTaxNumber.GetBusinessTaxNumberDigit(NoDigitTaxNumber: string): string;
@@ -92,7 +92,7 @@ begin
   SetLength(IntArInitialMultiplier, BusinessTaxNumberLength-1);
   IntArInitialMultiplier := [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
-  Result := IntToStr(DigitIterator(NoDigitTaxNumber,11,IntArInitialMultiplier));
+  Result := DigitIterator(NoDigitTaxNumber,11,IntArInitialMultiplier);
 end;
 
 function TTaxNumber.GetFirstPartTaxDigit(NoDigitTaxNumber: string): string;
@@ -102,7 +102,7 @@ begin
   SetLength(IntArInitialMultiplier, TaxNumberLength-1);
   IntArInitialMultiplier := [10, 9, 8, 7, 6, 5, 4, 3, 2];
 
-  Result := IntToStr(DigitIterator(NoDigitTaxNumber,8,IntArInitialMultiplier));
+  Result := DigitIterator(NoDigitTaxNumber,8,IntArInitialMultiplier);
 end;
 
 function TTaxNumber.GetSecondPartBusinessTaxDigit(NoDigitTaxNumber: string): string;
@@ -112,7 +112,7 @@ begin
   SetLength(IntArFinalMultiplier, BusinessTaxNumberLength-1);
   IntArFinalMultiplier   := [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
-  Result := IntToStr(DigitIterator(NoDigitTaxNumber,12,IntArFinalMultiplier));
+  Result := DigitIterator(NoDigitTaxNumber,12,IntArFinalMultiplier);
 end;
 
 function TTaxNumber.GetSecondPartTaxDigit(NoDigitTaxNumber: string): string;
@@ -122,7 +122,7 @@ begin
   SetLength(IntArFinalMultiplier, TaxNumberLength-1);
   IntArFinalMultiplier   := [11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
 
-  Result := IntToStr(DigitIterator(NoDigitTaxNumber,9,IntArFinalMultiplier));
+  Result := DigitIterator(NoDigitTaxNumber,9,IntArFinalMultiplier);
 end;
 
 function TTaxNumber.GetTaxNumberDigit(NoDigitTaxNumber: string): string;
