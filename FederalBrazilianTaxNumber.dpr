@@ -14,7 +14,8 @@ uses
   System.SysUtils,
   System.Classes,
   TaxNumber in 'TaxNumber.pas',
-  ITaxNumber in 'ITaxNumber.pas';
+  ITaxNumber in 'ITaxNumber.pas',
+  TaxNumberDigits in 'TaxNumberDigits.pas';
 
 {$R *.res}
 
@@ -22,7 +23,7 @@ function CheckTaxNumber(TaxNumber: string): Boolean;
 var
  tax:TTaxNumber;
 begin
-  tax := TTaxNumber.Create;
+  tax := TTaxNumber.Create(TTaxNumberDigits.Create);
   Result := tax.CheckTaxNumber(TaxNumber);
 end;
 
@@ -30,7 +31,7 @@ function CheckBusinessTaxNumber(TaxNumber: string): Boolean;
 var
  tax:TTaxNumber;
 begin
-  tax := TTaxNumber.Create;
+  tax := TTaxNumber.Create(TTaxNumberDigits.Create);
   Result := tax.CheckBusinessTaxNumber(TaxNumber);
 end;
 

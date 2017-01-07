@@ -12,7 +12,7 @@ unit TestTaxNumber;
 interface
 
 uses
-  TestFramework, TaxNumber, ITaxNumber, System.SysUtils;
+  TestFramework, TaxNumber, ITaxNumber, TaxNumberDigits, System.SysUtils;
 
 type
   // Test methods for class TTaxNumber
@@ -34,7 +34,7 @@ implementation
 
 procedure TestTTaxNumber.SetUp;
 begin
-  FTaxNumber := TTaxNumber.Create;
+  FTaxNumber := TTaxNumber.Create(TTaxNumberDigits.Create);
 end;
 
 procedure TestTTaxNumber.TearDown;
