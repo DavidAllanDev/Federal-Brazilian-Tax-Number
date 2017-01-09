@@ -3,7 +3,7 @@ unit TaxNumber;
 interface
 
 uses
-  System.SysUtils, ITaxNumber, TaxNumberDigits;
+  SysUtils, ITaxNumber, TaxNumberDigits;
 
 type
     TTaxNumber = class(TInterfacedObject,Tax)

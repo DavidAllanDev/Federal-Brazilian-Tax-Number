@@ -97,3 +97,6 @@ FederalBrazilianTaxNumber.identcache
 *.~56~
 *.~57~
 *.~*~
+*.ppu
+lib/x86_64-win64/ITaxNumber.o
+*.compiled

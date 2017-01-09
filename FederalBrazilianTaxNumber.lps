@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="3">
+      <Unit0>
+        <Filename Value="FederalBrazilianTaxNumber.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <TopLine Value="12"/>
+        <CursorPos X="26" Y="30"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="TaxNumber.pas"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="3" Y="6"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="TaxNumberDigits.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="3" Y="6"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit2>
+    </Units>
+    <JumpHistory Count="2" HistoryIndex="1">
+      <Position1>
+        <Filename Value="TaxNumber.pas"/>
+      </Position1>
+      <Position2>
+        <Filename Value="TaxNumberDigits.pas"/>
+      </Position2>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
