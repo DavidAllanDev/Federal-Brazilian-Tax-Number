@@ -4,38 +4,66 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="3">
+    <Units Count="6">
       <Unit0>
         <Filename Value="FederalBrazilianTaxNumber.lpr"/>
         <IsPartOfProject Value="True"/>
-        <TopLine Value="12"/>
         <CursorPos X="26" Y="30"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="TaxNumber.pas"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="3" Y="6"/>
+        <TopLine Value="4"/>
+        <CursorPos X="19" Y="14"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="TaxNumberDigits.pas"/>
-        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="76"/>
+        <CursorPos X="97" Y="14"/>
+        <UsageCount Value="11"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\win64\classes.pp"/>
+        <UnitName Value="Classes"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="49"/>
+        <CursorPos X="95" Y="66"/>
+        <UsageCount Value="10"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="C:\lazarus\fpc\3.0.0\source\rtl\win64\system.pp"/>
+        <UnitName Value="System"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="217"/>
+        <CursorPos X="14" Y="233"/>
+        <UsageCount Value="10"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="ITaxNumber.pas"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="3" Y="6"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
-      </Unit2>
+      </Unit5>
     </Units>
-    <JumpHistory Count="2" HistoryIndex="1">
+    <JumpHistory Count="3" HistoryIndex="2">
       <Position1>
-        <Filename Value="TaxNumber.pas"/>
+        <Filename Value="FederalBrazilianTaxNumber.lpr"/>
+        <Caret Line="30" Column="26"/>
       </Position1>
       <Position2>
-        <Filename Value="TaxNumberDigits.pas"/>
+        <Filename Value="FederalBrazilianTaxNumber.lpr"/>
+        <Caret Line="30" Column="26"/>
       </Position2>
+      <Position3>
+        <Filename Value="TaxNumber.pas"/>
+        <Caret TopLine="50"/>
+      </Position3>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>
