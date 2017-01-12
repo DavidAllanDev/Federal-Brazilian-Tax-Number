@@ -7,7 +7,7 @@
             <Dependencies/>
         </Projects>
         <Projects Include="Test\FederalBrazilianTaxNumberTests.dproj">
-            <Dependencies/>
+            <Dependencies>FederalBrazilianTaxNumber.dproj</Dependencies>
         </Projects>
     </ItemGroup>
     <ProjectExtensions>
@@ -26,13 +26,13 @@
     <Target Name="FederalBrazilianTaxNumber:Make">
         <MSBuild Projects="FederalBrazilianTaxNumber.dproj" Targets="Make"/>
     </Target>
-    <Target Name="FederalBrazilianTaxNumberTests">
+    <Target Name="FederalBrazilianTaxNumberTests" DependsOnTargets="FederalBrazilianTaxNumber">
         <MSBuild Projects="Test\FederalBrazilianTaxNumberTests.dproj"/>
     </Target>
-    <Target Name="FederalBrazilianTaxNumberTests:Clean">
+    <Target Name="FederalBrazilianTaxNumberTests:Clean" DependsOnTargets="FederalBrazilianTaxNumber:Clean">
         <MSBuild Projects="Test\FederalBrazilianTaxNumberTests.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="FederalBrazilianTaxNumberTests:Make">
+    <Target Name="FederalBrazilianTaxNumberTests:Make" DependsOnTargets="FederalBrazilianTaxNumber:Make">
         <MSBuild Projects="Test\FederalBrazilianTaxNumberTests.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
