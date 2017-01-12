@@ -29,6 +29,11 @@ const
 
 { TTaxNumber }
 
+constructor TTaxNumber.Create(Digit :TTaxNumberDigits);
+begin
+  _digit := Digit;
+end;
+
 function TTaxNumber.CheckTaxNumber(TaxNumber: string): Boolean;
 begin
   TaxNumber := RemoveSpecialChars(TaxNumber);
@@ -45,26 +50,6 @@ begin
     Result := False;
 end;
 
-constructor TTaxNumber.Create(Digit :TTaxNumberDigits);
-begin
-  _digit := Digit;
-end;
-
-function TTaxNumber.GetDigits(taxNumber: string): string;
-begin
- Result := Copy(taxNumber, Length(taxNumber)-1, NumberOfDigits);
-end;
-
-function TTaxNumber.RemoveDigits(value: string; digits: byte): string;
-begin
-  Result := Copy(value,0,Length(value)-digits);
-end;
-
-function TTaxNumber.RemoveSpecialChars(text: string): string;
-begin
-  Result := text.Replace('.','').Replace('-','').Replace('/','');
-end;
-
 function TTaxNumber.CheckBusinessTaxNumber(TaxNumber: string): Boolean;
 begin
   TaxNumber := RemoveSpecialChars(TaxNumber);
@@ -79,6 +64,21 @@ begin
     Result := True
   else
     Result := False;
+end;
+
+function TTaxNumber.RemoveDigits(value: string; digits: byte): string;
+begin
+  Result := Copy(value,0,Length(value)-digits);
+end;
+
+function TTaxNumber.RemoveSpecialChars(text: string): string;
+begin
+  Result := text.Replace('.','').Replace('-','').Replace('/','');
+end;
+
+function TTaxNumber.GetDigits(taxNumber: string): string;
+begin
+ Result := Copy(taxNumber, Length(taxNumber)-1, NumberOfDigits);
 end;
 
 end.
